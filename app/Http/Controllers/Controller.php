@@ -10,34 +10,24 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 
-    public function concatenar($cadena1, $cadena2)
+    public function sumar($a, $b)
     {
-        return $cadena1 . $cadena2;
+        return $a + $b;
     }
-
-    public function longitudCadena($cadena)
+    public function restar($a, $b)
     {
-        return strlen($cadena);
+        return $a - $b;
     }
-
-    public function arraySuma($numeros)
+    public function multiplicar($a, $b)
     {
-        return array_sum($numeros);
+        return $a * $b;
     }
-
-    public function esPar($numero)
+    public function dividir($a, $b)
     {
-        return $numero % 2 == 0;
+        if ($b != 0) {
+            return $a / $b;
+        } else {
+            return 'Error: División por cero';
+        }
     }
-
-    public function arrayInvertir($array)
-    {
-        return array_reverse($array);
-    }
-
-
-
-
-
-
 }

@@ -1,73 +1,51 @@
 <?php
-
 namespace Tests\Unit;
-
 use PHPUnit\Framework\TestCase;
-
 class ExampleTest extends TestCase
 {
-    /**
-     * A basic test example.
-     */
-    public function test_that_true_is_true(): void
+    public function testSumar()
     {
-        $this->assertTrue(true);
-    }
-
-    public function testConcatenar()
-    {
-        $resultado = (new \App\Http\Controllers\Controller)->concatenar('Hola', 'Mundo');
-
-        $this->assertEquals('HolaMundo', $resultado);
-        $this->assertIsString($resultado);
-        $this->assertNotEmpty($resultado);
-        $this->assertStringContainsString('Mundo', $resultado);
-        $this->assertSame(10, strlen($resultado));
-    }
-
-    public function testLongitudCadena()
-    {
-        $resultado = (new \App\Http\Controllers\Controller)->longitudCadena('Laravel');
-
+        $resultado = (new \App\Http\Controllers\Controller)->sumar(5, 3);
+        $this->assertEquals(8, $resultado); 
         $this->assertIsInt($resultado);
         $this->assertGreaterThan(0, $resultado);
-        $this->assertEquals(7, $resultado);
-        $this->assertIsNotString($resultado);
         $this->assertLessThanOrEqual(10, $resultado);
+        $this->assertNotEquals(10, $resultado);
     }
-
-    public function testArraySuma()
+    public function testRestar()
     {
-        $resultado = (new \App\Http\Controllers\Controller)->arraySuma([1, 2, 3, 4, 5]);
-
-        $this->assertEquals(15, $resultado);
+        $resultado = (new \App\Http\Controllers\Controller)->restar(5, 3);
+        $this->assertEquals(2, $resultado);
         $this->assertIsInt($resultado);
-        $this->assertGreaterThanOrEqual(10, $resultado);
-        $this->assertLessThanOrEqual(20, $resultado);
-        $this->assertNotEquals(20, $resultado);
+        $this->assertNotEquals(0, $resultado);
+        $this->assertLessThanOrEqual(5, $resultado);
+        $this->assertGreaterThanOrEqual(2, $resultado);
     }
-
-    public function testEsPar()
+    public function testMultiplicar()
     {
-        $esPar = (new \App\Http\Controllers\Controller)->esPar(10);
-
-        $this->assertTrue($esPar);
-        $this->assertIsBool($esPar);
-        $this->assertNotFalse($esPar);
-        $this->assertFalse((new \App\Http\Controllers\Controller)->esPar(7));
-        $this->assertNotTrue((new \App\Http\Controllers\Controller)->esPar(7));
+        $resultado = (new \App\Http\Controllers\Controller)->multiplicar(2, 4);
+        $this->assertEquals(8, $resultado);
+        $this->assertIsInt($resultado);
+        $this->assertGreaterThanOrEqual(0, $resultado);
+        $this->assertLessThanOrEqual(10, $resultado);
+        $this->assertNotEquals(10, $resultado);
     }
-
-    public function testArrayInvertir()
+    public function testDividir()
     {
-        $resultado = (new \App\Http\Controllers\Controller)->arrayInvertir([1, 2, 3, 4, 5]);
-
-        $this->assertEquals([5, 4, 3, 2, 1], $resultado);
-        $this->assertNotEquals([1, 2, 3, 4, 5], $resultado);
-        $this->assertIsArray($resultado);
-        $this->assertCount(5, $resultado);
-        $this->assertContains(3, $resultado);
+        $resultado = (new \App\Http\Controllers\Controller)->dividir(7, 2);
+        $this->assertEquals(3.5, $resultado);
+        $this->assertIsFloat($resultado);
+        $this->assertNotEquals(0, $resultado);
+        $this->assertLessThanOrEqual(5, $resultado);
+        $this->assertGreaterThanOrEqual(2, $resultado);
     }
-
-
+    public function testDividirPorCero()
+    {
+        $resultado = (new \App\Http\Controllers\Controller)->dividir(6, 0);
+        $this->assertEquals('Error: División por cero', $resultado);
+        $this->assertIsString($resultado);
+        $this->assertStringContainsString('Error', $resultado);
+        $this->assertNotEmpty($resultado);
+        $this->assertNotEquals('División por cero', $resultado);
+    }
 }
