@@ -8,9 +8,9 @@ class ExampleTest extends TestCase
         $resultado = (new \App\Http\Controllers\Controller)->sumar(5, 3);
         $this->assertEquals(8, $resultado); 
         $this->assertIsInt($resultado);
-        $this->assertGreaterThan(0, $resultado);
-        $this->assertLessThanOrEqual(10, $resultado);
-        $this->assertNotEquals(10, $resultado);
+        $this->assertGreaterThan(0, $resultado); //mayor
+        $this->assertLessThanOrEqual(10, $resultado); //menor
+        $this->assertNotEquals(10, $resultado); //no es igual
     }
     public function testRestar()
     {
